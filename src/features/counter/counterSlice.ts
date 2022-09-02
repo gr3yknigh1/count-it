@@ -7,7 +7,10 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-    counters: []
+    counters: [
+        { label: "wtf", count: 1 },
+        { label: "lmao", count: 12 }
+    ]
 }
 
 const counterSlice = createSlice({
