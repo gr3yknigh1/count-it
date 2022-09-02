@@ -1,8 +1,13 @@
 import counterSlice from './counterSlice';
 import Counter from './counter';
 
+import Card from './components/Card';
+import CardForm from './components/CardForm';
+
 export {
-    counterSlice
+    counterSlice,
+    Card,
+    CardForm,
 };
 
 export {
