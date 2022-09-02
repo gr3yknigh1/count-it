@@ -1,5 +1,7 @@
 import { useCallback } from "react";
+import { useAppDispatch } from "../../../app/hooks";
 
+import { increment, decrement } from "../counterSlice";
 import Counter from "../counter";
 
 export interface CardProps {
@@ -8,15 +10,16 @@ export interface CardProps {
 
 export default function Card(props: CardProps): JSX.Element {
 
+  const dispatch = useAppDispatch();
   const { label, count } = props.counter;
 
   const openMenu = useCallback(() => {
     console.log("Open menu");
   }, []);
 
-  const changeCountValue = useCallback((delta: Number) => {
-    console.log(`change value by ${delta}`);
-  }, []);
+  const incrementCount = useCallback(() => {
+    dispatch(increment(props.counter));
+  }, [dispatch, props]);
 
   return (
     <div className="card">
@@ -25,13 +28,13 @@ export default function Card(props: CardProps): JSX.Element {
       <span className="card-count">{ count.toString() }</span>
       <button
         className="card-button card-button-plus"
-        onClick={() => { changeCountValue(+1); }}
+        onClick={() => { incrementCount(); }}
       >
         +1
       </button>
       <button
         className="card-button card-button-minus"
-        onClick={() => { changeCountValue(-1); }}
+        onClick={() => { incrementCount(); }}
       >
         -1
       </button>

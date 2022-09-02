@@ -1,5 +1,5 @@
 
 export default interface Counter {
-    label: String,
-    count: Number
+    label: string,
+    count: number
 }
