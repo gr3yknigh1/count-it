@@ -12,12 +12,18 @@ export {
     CardContainer,
 };
 
+export type {
+    Counter,
+}
+
 export {
     counterReducer,
 } from './counterSlice';
 
+export {
+    createCounter,
+} from './counter';
+
 export type {
     CounterState
 } from './counterSlice';
-
-export default Counter;

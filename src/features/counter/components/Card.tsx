@@ -11,14 +11,18 @@ export interface CardProps {
 export default function Card(props: CardProps): JSX.Element {
 
   const dispatch = useAppDispatch();
-  const { label, count } = props.counter;
+  const { id, label, count } = props.counter;
 
   const openMenu = useCallback(() => {
     console.log("Open menu");
   }, []);
 
   const incrementCount = useCallback(() => {
-    dispatch(increment(props.counter));
+    dispatch(increment(id));
+  }, [dispatch, props]);
+  
+  const decrementCount = useCallback(() => {
+    dispatch(decrement(id));
   }, [dispatch, props]);
 
   return (
@@ -34,7 +38,7 @@ export default function Card(props: CardProps): JSX.Element {
       </button>
       <button
         className="card-button card-button-minus"
-        onClick={() => { incrementCount(); }}
+        onClick={() => { decrementCount(); }}
       >
         -1
       </button>

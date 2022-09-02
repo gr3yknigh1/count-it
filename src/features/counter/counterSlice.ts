@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import Counter from "./counter";
+import Counter, { createCounter } from "./counter";
 
 export interface CounterState {
     counters: Counter[]
@@ -8,8 +8,8 @@ export interface CounterState {
 
 const initialState: CounterState = {
     counters: [
-        { label: "wtf", count: 1 },
-        { label: "lmao", count: 12 }
+        createCounter("wtf", 1),
+        createCounter("lmao", 12),
     ]
 }
 
@@ -17,10 +17,10 @@ const counterSlice = createSlice({
     name: "counter",
     initialState: initialState,
     reducers: {
-        increment: (state, action: PayloadAction<Counter>) => {
+        increment: (state, action: PayloadAction<string>) => {
             for (let index = 0; index < state.counters.length; index++) {
                 const counter: Counter = state.counters[index];
-                if (counter === action.payload) {
+                if (counter.id === action.payload) {
                     state.counters[index] = {
                         ...counter,
                         count: counter.count + 1
@@ -29,10 +29,10 @@ const counterSlice = createSlice({
                 }
             }
         },
-        decrement: (state, action: PayloadAction<Counter>) => {
+        decrement: (state, action: PayloadAction<string>) => {
             for (let index = 0; index < state.counters.length; index++) {
                 const counter: Counter = state.counters[index];
-                if (counter === action.payload) {
+                if (counter.id === action.payload) {
                     state.counters[index] = {
                         ...counter,
                         count: counter.count - 1
