@@ -1,0 +1,61 @@
+:root {
+  font-family: "Roboto Mono";
+  font-size: 16px;
+}
+
+.color-theme {
+  --background: black;
+  --background-1: rgb(25, 25, 25);
+  --foreground: rgb(255, 255, 255);
+  --accent: orange;
+  --highlighted: yellow;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+.app {
+}
+
+.app__header {
+  display: flex;
+  justify-content: center;
+}
+
+.app__title {
+  font-size: 4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  max-width: 300px;
+  margin: auto;
+}
+
+.form__input {
+}
+
+.form_button {
+}
+
+.card {
+  background-color: var(--background-1);
+}
+
+.card__menubutton {
+
+}
+
+.card__label {
+
+}
+
+.card__count {
+
+}
