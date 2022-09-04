@@ -6,28 +6,28 @@ import CardForm from './components/CardForm';
 import CardContainer from './components/CardContainer';
 
 export {
-    counterSlice,
-    Card,
-    CardForm,
-    CardContainer,
+  counterSlice,
+  Card,
+  CardForm,
+  CardContainer,
 };
 
 export type {
-    Counter,
+  Counter,
 }
 
 export {
-    counterReducer,
-    increment,
-    decrement,
-    pushCounter,
-    removeCounter
+  counterReducer,
+  increment,
+  decrement,
+  pushCounter,
+  removeCounter
 } from './counterSlice';
 
 export {
-    createCounter,
+  createCounter,
 } from './counter';
 
 export type {
-    CounterState
+  CounterState
 } from './counterSlice';
