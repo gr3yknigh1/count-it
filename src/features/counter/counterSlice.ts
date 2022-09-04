@@ -6,6 +6,8 @@ export interface CounterState {
     counters: Counter[]
 }
 
+export type CounterAction = (counter: Counter) => Counter;
+
 const initialState: CounterState = {
     counters: [
         createCounter("wtf", 1),
@@ -13,33 +15,55 @@ const initialState: CounterState = {
     ]
 }
 
+function applyAction2Counters(
+    counters: Counter[],
+    targetCounterIds: string[],
+    action: CounterAction
+): Counter[] {
+
+    return counters.map((counter) => {
+        const isTarget = targetCounterIds.find(
+            id => id === counter.id
+        );
+        return isTarget ? action(counter) : counter;
+    });
+}
+
+function applyDelta2Counters(
+    counters: Counter[],
+    targetCounterIds: string[],
+    delta: number
+): Counter[] {
+
+    return applyAction2Counters(
+        counters,
+        targetCounterIds,
+        (counter) => {
+            return {
+                ...counter,
+                count: counter.count + delta
+            };
+        }
+    );
+}
+
 const counterSlice = createSlice({
     name: "counter",
     initialState: initialState,
     reducers: {
         increment: (state, action: PayloadAction<string>) => {
-            for (let index = 0; index < state.counters.length; index++) {
-                const counter: Counter = state.counters[index];
-                if (counter.id === action.payload) {
-                    state.counters[index] = {
-                        ...counter,
-                        count: counter.count + 1
-                    };
-                    break;
-                }
-            }
+            state.counters = applyDelta2Counters(
+                state.counters,
+                [action.payload],
+                1
+            );
         },
         decrement: (state, action: PayloadAction<string>) => {
-            for (let index = 0; index < state.counters.length; index++) {
-                const counter: Counter = state.counters[index];
-                if (counter.id === action.payload) {
-                    state.counters[index] = {
-                        ...counter,
-                        count: counter.count - 1
-                    };
-                    break;
-                }
-            }
+            state.counters = applyDelta2Counters(
+                state.counters,
+                [action.payload],
+                -1
+            )
         }
     },
 });
