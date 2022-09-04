@@ -35,7 +35,7 @@ export default function CardForm(): JSX.Element {
         className="form__button"
         onSubmit={onCardFormSubmit}
       >
-        new count
+        Add
       </button>
     </form>
   );
