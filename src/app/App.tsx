@@ -12,9 +12,12 @@ export default function App(): JSX.Element {
     <Provider store={ store }>
       <div className="app">
         <header className="app__header">
-          <h1 className="app__title">count it</h1>
+          <h1 className="app__title">
+            {"count "}
+            <span className="text--highlighted">it</span>
+          </h1>
         </header>
-        <main className="app_content">
+        <main className="app__content">
           <CardForm/>
           <CardContainer/>
         </main>
