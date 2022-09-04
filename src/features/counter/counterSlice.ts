@@ -64,6 +64,14 @@ const counterSlice = createSlice({
         [action.payload],
         -1
       )
+    },
+    pushCounter: (state, action: PayloadAction<Counter>) => {
+      state.counters = [...state.counters, action.payload];
+    },
+    removeCounter: (state, action: PayloadAction<string>) => {
+      state.counters = state.counters.filter(
+        counter => counter.id !== action.payload
+      );
     }
   },
 });
@@ -71,4 +79,9 @@ const counterSlice = createSlice({
 export default counterSlice;
 
 export const counterReducer = counterSlice.reducer;
-export const { increment, decrement } = counterSlice.actions;
+export const {
+  increment,
+  decrement,
+  pushCounter,
+  removeCounter
+} = counterSlice.actions;
