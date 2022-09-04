@@ -32,18 +32,20 @@ export default function Card(props: CardProps): JSX.Element {
         <span className="card__label">{ label }</span>
       </div>
       <span className="card__count">{ count.toString() }</span>
-      <button
-        className="card__button"
-        onClick={() => { incrementCount(); }}
-      >
-        +1
-      </button>
-      <button
-        className="card__button"
-        onClick={() => { decrementCount(); }}
-      >
-        -1
-      </button>
+      <div className="card__button-holder">
+        <button
+          className="card__button"
+          onClick={() => { incrementCount(); }}
+        >
+          +1
+        </button>
+        <button
+          className="card__button"
+          onClick={() => { decrementCount(); }}
+        >
+          -1
+        </button>
+      </div>
     </div>
   );
 }
