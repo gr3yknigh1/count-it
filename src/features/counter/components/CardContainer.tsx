@@ -3,16 +3,16 @@ import Card from "./Card";
 
 export default function CardContainer() {
 
-    const counters = useAppSelector(state => state.counter.counters);
-    const counterElements = counters.map(
-        (counter) => <Card counter={ counter }></Card>
-    );
+  const counters = useAppSelector(state => state.counter.counters);
+  const counterElements = counters.map(
+    (counter) => <Card counter={ counter }></Card>
+  );
 
-    return (
-        <div
-            className="card-container"
-        >
-            { counterElements }
-        </div>
+  return (
+    <div
+      className="card-container"
+    >
+      { counterElements }
+    </div>
   )
 }
