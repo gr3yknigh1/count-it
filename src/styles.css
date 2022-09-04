@@ -44,8 +44,24 @@ body {
 .form_button {
 }
 
+.card-container {
+  display: flexbox;
+
+  padding: 50px;
+}
+
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: var(--background-1);
+
+  text-align: center;
+
+  width: auto;
+  max-width: 200px;
+
+  padding: 10px;
+  margin: 20px;
 }
 
 .card__menubutton {
@@ -53,9 +69,21 @@ body {
 }
 
 .card__label {
-
+  font-size: 1.5em;
+  margin: 20px;
 }
 
 .card__count {
+  margin: 10px;
+  font-size: 2em;
+}
 
+.card__button-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card__button {
+  width: 100%;
 }
