@@ -10,8 +10,8 @@ export type CounterAction = (counter: Counter) => Counter;
 
 const initialState: CounterState = {
   counters: [
-    createCounter("wtf", 1),
-    createCounter("lmao", 12),
+    createCounter("Apple", 1),
+    createCounter("Orange", 12),
   ]
 }
 
