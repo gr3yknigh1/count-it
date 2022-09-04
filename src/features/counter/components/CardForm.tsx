@@ -21,18 +21,18 @@ export default function CardForm(): JSX.Element {
 
   return (
     <form
-      className="card-form"
+      className="form"
       onSubmit={onCardFormSubmit}
     >
       <input
-        className="card-form-input"
+        className="form__input"
         type="text"
         placeholder="Name of new count"
         onChange={onCardInputChange}
         value={label}
       ></input>
       <button
-        className="card-form-submit"
+        className="form__button"
         onSubmit={onCardFormSubmit}
       >
         new count
