@@ -19,11 +19,11 @@ export default function Card(props: CardProps): JSX.Element {
 
   const incrementCount = useCallback(() => {
     dispatch(increment(id));
-  }, [dispatch, props]);
-  
+  }, [dispatch, id]);
+
   const decrementCount = useCallback(() => {
     dispatch(decrement(id));
-  }, [dispatch, props]);
+  }, [dispatch, id]);
 
   return (
     <div className="card">
