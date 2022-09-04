@@ -18,6 +18,8 @@ export type {
 
 export {
     counterReducer,
+    increment,
+    decrement,
     pushCounter,
     removeCounter
 } from './counterSlice';
