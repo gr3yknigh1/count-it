@@ -4,15 +4,24 @@ import {
   FormEvent,
   ChangeEvent
 } from "react";
+import { useAppDispatch } from "../../../app/hooks";
+import { createCounter } from "../counter";
+import { pushCounter } from "../counterSlice";
 
 export default function CardForm(): JSX.Element {
-
+  const dispatch = useAppDispatch();
   const [label, setLabel] = useState("");
 
   const onCardFormSubmit = useCallback((event: FormEvent) => {
     event.preventDefault();
-    console.log("Submit card");
-  }, []);
+    if (label === "") {
+      return;
+    }
+    dispatch(pushCounter(
+      createCounter(label, 0)
+    ));
+    setLabel("");
+  }, [dispatch, label]);
 
   const onCardInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
