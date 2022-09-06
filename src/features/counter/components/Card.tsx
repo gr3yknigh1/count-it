@@ -28,7 +28,6 @@ export default function Card(props: CardProps): JSX.Element {
   return (
     <div className="card">
       <div className="card__header">
-        {/* <button className="card__menubutton" onClick={openMenu}>*</button> */}
         <span className="card__label">{ label }</span>
       </div>
       <span className="card__count">{ count.toString() }</span>
