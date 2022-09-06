@@ -106,10 +106,7 @@ button {
   background-color: var(--background-1);
   border-radius: 10px;
 
-  text-align: center;
-
-  width: 100%;
-  max-width: 200px;
+  width: 200px;
 
   padding: 10px;
   margin: 15px;
@@ -126,27 +123,35 @@ button {
 
 }
 
+.card__header {
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.card__header:hover {
+  overflow:visible;
+  font-weight:700;
+  text-decoration: underline;
+}
+
 .card__label {
   font-size: 1.5em;
   margin: 20px;
-
   color: var(--highlighted);
-  overflow: scroll;
-}
-
-.card__label:hover {
-  font-weight:700;
 }
 
 .card__count {
   margin: 10px;
   font-size: 2em;
   color: var(--accent);
+  text-align: center;
 }
 
 .card__button-holder {
   display: flex;
   flex-direction: row;
+
   justify-content: center;
 }
 
@@ -155,12 +160,9 @@ button {
   height: 50px;
 
   font-size: 1.4em;
-
-
   border-radius: 10px;
 
   margin: 10px;
-
 }
 
 .card__button, .form__button {
