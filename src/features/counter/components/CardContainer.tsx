@@ -5,7 +5,7 @@ export default function CardContainer() {
 
   const counters = useAppSelector(state => state.counter.counters);
   const counterElements = counters.map(
-    (counter) => <Card counter={ counter }></Card>
+    (counter) => <Card key={ counter.id } counter={ counter }></Card>
   );
 
   return (
