@@ -3,7 +3,7 @@
   font-size: 16px;
 }
 
-.color-theme {
+.dark-theme {
   --background: rgb(0, 0, 0);
   --background-0: rgb(8, 8, 8);
   --background-1: rgba(19, 19, 19, 0.781);
@@ -15,6 +15,17 @@
   --highlighted: rgb(224, 246, 23);
 }
 
+.light-theme {
+  --background: rgb(0, 0, 0);
+  --background-0: rgb(8, 8, 8);
+  --background-1: rgba(19, 19, 19, 0.781);
+  --background-2: rgba(32, 32, 32, 0.745);
+  --background-3: rgb(59, 59, 59);
+  --background-4: rgb(84, 84, 84);
+  --foreground: rgb(238, 231, 231);
+  --accent: rgb(139, 183, 255);
+  --highlighted: rgb(224, 246, 23);
+}
 body {
   color: var(--foreground);
   background-color: var(--background);
