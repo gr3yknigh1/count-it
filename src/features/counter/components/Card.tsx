@@ -56,7 +56,7 @@ function CardContent(props: CardContentProps): JSX.Element {
   if (showMenu) {
     return (
       <CardMenu id={ id }/>
-    )
+    );
   }
 
   return (
