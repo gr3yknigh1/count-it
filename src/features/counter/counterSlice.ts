@@ -3,16 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Counter, { createCounter } from "./counter";
 
 export interface CounterState {
-    counters: Counter[]
+  counters: Counter[]
 }
 
 export type CounterAction = (counter: Counter) => Counter;
 
 const initialState: CounterState = {
-  counters: [
-    createCounter("Apple", 1),
-    createCounter("Orange", 12),
-  ]
+  counters: []
 }
 
 function applyAction2Counters(
@@ -47,9 +44,28 @@ function applyDelta2Counters(
   );
 }
 
+
+function saveToLocalStorage(key: string, obj: object): void {
+  localStorage.setItem(
+    key, JSON.stringify(obj)
+  );
+}
+
+
+function loadFromLoadStorage<T>(key: string): T {
+  return JSON.parse(localStorage.getItem(key) as string);
+}
+
+
+function loadFromDatabase(): CounterState {
+  //NOTE(gr3yknigh1): mocking loading from db
+  const state = loadFromLoadStorage<CounterState>("counter");
+  return state ? state : initialState ;
+}
+
 const counterSlice = createSlice({
   name: "counter",
-  initialState: initialState,
+  initialState: loadFromDatabase(),
   reducers: {
     increment: (state, action: PayloadAction<string>) => {
       state.counters = applyDelta2Counters(
@@ -57,6 +73,7 @@ const counterSlice = createSlice({
         [action.payload],
         1
       );
+      saveToLocalStorage("counter", state);
     },
     decrement: (state, action: PayloadAction<string>) => {
       state.counters = applyDelta2Counters(
@@ -64,14 +81,17 @@ const counterSlice = createSlice({
         [action.payload],
         -1
       )
+      saveToLocalStorage("counter", state);
     },
     pushCounter: (state, action: PayloadAction<Counter>) => {
       state.counters = [...state.counters, action.payload];
+      saveToLocalStorage("counter", state);
     },
     removeCounter: (state, action: PayloadAction<string>) => {
       state.counters = state.counters.filter(
         counter => counter.id !== action.payload
       );
+      saveToLocalStorage("counter", state);
     }
   },
 });
